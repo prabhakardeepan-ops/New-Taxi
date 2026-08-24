@@ -3,14 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Book affordable intercity one-way drop taxis across Tamil Nadu, Bangalore, Tirupati, and Nellore. Instant KM calculation, zero return charges, and 24/7 service." />
-  <meta name="keywords" content="Drop Taxi, One Way Taxi Tamil Nadu, Chennai to Bangalore Taxi, Tirupati Cab, Outstation Taxi Booking" />
+
+  <meta
+    name="description"
+    content="Book affordable intercity one-way drop taxis across Tamil Nadu, Bangalore, Tirupati, and Nellore. Offline KM calculation, zero return charges, and 24/7 service."
+  />
+
+  <meta
+    name="keywords"
+    content="Drop Taxi, One Way Taxi Tamil Nadu, Chennai to Bangalore Taxi, Tirupati Cab, Outstation Taxi Booking"
+  />
+
   <title>Tamil Drop Taxi | Premium One-Way Intercity Rides</title>
 
   <!-- Google Fonts & Lucide Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -21,6 +34,7 @@
       --brand: #f5b800;
       --brand-glow: rgba(245, 184, 0, 0.25);
       --accent: #10b981;
+      --danger: #ef4444;
       --text: #f8fafc;
       --muted: #94a3b8;
       --line: rgba(255, 255, 255, 0.08);
@@ -29,8 +43,16 @@
       --max-w: 1200px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg);
@@ -39,556 +61,2185 @@
       overflow-x: hidden;
     }
 
-    a { text-decoration: none; color: inherit; }
-    button, input, select, textarea { font-family: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
 
-    /* Sticky Header */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
     .topbar {
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       background: rgba(7, 13, 20, 0.85);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
     }
+
     .nav {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       height: 76px;
     }
+
     .logo {
-      display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
     }
+
     .logo-badge {
-      width: 44px; height: 44px; border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--brand), #ffea79);
-      color: #000; display: grid; place-items: center;
+      color: #000;
+      display: grid;
+      place-items: center;
       box-shadow: 0 0 20px var(--brand-glow);
     }
-    .nav-links { display: flex; gap: 28px; color: var(--muted); font-weight: 600; font-size: 15px; }
-    .nav-links a:hover { color: var(--brand); }
-    .nav-actions { display: flex; gap: 12px; align-items: center; }
 
-    /* Buttons */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 12px 22px; border-radius: 12px; font-weight: 700; font-size: 15px;
-      cursor: pointer; transition: all 0.25s ease; border: 1px solid transparent;
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 15px;
     }
+
+    .nav-links a:hover {
+      color: var(--brand);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+    }
+
     .btn-brand {
-      background: var(--brand); color: #000;
+      background: var(--brand);
+      color: #000;
       box-shadow: 0 8px 25px var(--brand-glow);
     }
-    .btn-brand:hover { transform: translateY(-2px); background: #ffc414; }
-    .btn-outline {
-      background: rgba(255,255,255,0.05); color: #fff; border-color: var(--line);
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--line-bright); }
-    .btn-call { background: #2563eb; color: #fff; }
-    .btn-call:hover { background: #1d4ed8; }
-    .btn-wa { background: #25d366; color: #000; font-weight: 800; }
-    .btn-wa:hover { background: #20ba5a; }
 
-    /* Hero Section */
-    .hero { padding: 40px 0 60px; position: relative; }
+    .btn-brand:hover {
+      transform: translateY(-2px);
+      background: #ffc414;
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      border-color: var(--line);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--line-bright);
+    }
+
+    .btn-call {
+      background: #2563eb;
+      color: #fff;
+    }
+
+    .btn-call:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: #000;
+      font-weight: 800;
+    }
+
+    .btn-wa:hover {
+      background: #20ba5a;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      padding: 40px 0 60px;
+      position: relative;
+    }
+
     .hero-grid {
-      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: start;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: start;
     }
+
     .hero-card {
-      background: linear-gradient(145deg, rgba(15,24,35,0.9), rgba(10,17,26,0.95));
-      border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15, 24, 35, 0.9),
+          rgba(10, 17, 26, 0.95)
+        );
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
+
     .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(245, 184, 0, 0.1); border: 1px solid rgba(245, 184, 0, 0.3);
-      color: var(--brand); padding: 6px 14px; border-radius: 99px; font-size: 13px; font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 184, 0, 0.1);
+      border: 1px solid rgba(245, 184, 0, 0.3);
+      color: var(--brand);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 700;
     }
-    h1 { font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.1; margin: 20px 0; font-weight: 800; }
-    .lead { color: var(--muted); font-size: 17px; margin-bottom: 28px; max-width: 540px; }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      line-height: 1.1;
+      margin: 20px 0;
+      font-weight: 800;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 28px;
+      max-width: 540px;
+    }
 
     .hero-stats {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;
-      padding-top: 24px; border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
     }
-    .stat-box { background: rgba(255,255,255,0.02); padding: 16px; border-radius: 12px; border: 1px solid var(--line); }
-    .stat-box strong { display: block; font-size: 20px; color: #fff; font-weight: 800; }
-    .stat-box span { font-size: 13px; color: var(--muted); }
 
-    /* Booking Form Card */
+    .stat-box {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 20px;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .stat-box span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* =========================
+       BOOKING FORM
+    ========================= */
+
     .booking-card {
-      background: var(--card); border: 1px solid var(--line-bright);
-      border-radius: var(--radius); padding: 28px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative;
+      background: var(--card);
+      border: 1px solid var(--line-bright);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
     }
-    .booking-card h2 { font-size: 22px; margin-bottom: 6px; }
-    .booking-card p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
 
-    .form-grid { display: grid; gap: 14px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .field { display: flex; flex-direction: column; gap: 6px; position: relative; }
-    .field label { font-size: 13px; font-weight: 600; color: #cbd5e1; display: flex; align-items: center; gap: 6px; }
-    .field input, .field select, .field textarea {
-      width: 100%; padding: 12px 14px; border-radius: 10px;
-      background: #081019; border: 1px solid var(--line); color: #fff;
-      font-size: 14px; outline: none; transition: 0.2s;
+    .booking-card h2 {
+      font-size: 22px;
+      margin-bottom: 6px;
     }
-    .field input:focus, .field select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-glow); }
-    
-    /* Autocomplete dropdown styling */
+
+    .booking-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+
+    .field label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #081019;
+      border: 1px solid var(--line);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px var(--brand-glow);
+    }
+
+    /* Autocomplete */
+
     .autocomplete-items {
-      position: absolute; border: 1px solid var(--line-bright); border-top: none;
-      z-index: 99; top: 100%; left: 0; right: 0; background: #0c1622;
-      border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
-      max-height: 180px; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+      position: absolute;
+      border: 1px solid var(--line-bright);
+      border-top: none;
+      z-index: 99;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #0c1622;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      max-height: 220px;
+      overflow-y: auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
     }
+
     .autocomplete-items div {
-      padding: 10px 14px; cursor: pointer; font-size: 13px; border-bottom: 1px solid var(--line);
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      border-bottom: 1px solid var(--line);
     }
-    .autocomplete-items div:hover { background: var(--brand); color: #000; }
 
-    /* Fare Breakdown Box */
+    .autocomplete-items div:hover {
+      background: var(--brand);
+      color: #000;
+    }
+
+    /* Fare */
+
     .fare-box {
-      background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 12px; padding: 16px; margin: 6px 0; display: grid; gap: 8px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 6px 0;
+      display: grid;
+      gap: 8px;
     }
-    .fare-row { display: flex; justify-content: space-between; font-size: 14px; color: #cbd5e1; }
-    .fare-total { font-size: 22px; font-weight: 800; color: var(--accent); border-top: 1px dashed rgba(16,185,129,0.4); padding-top: 6px; }
 
-    /* Modal Alert */
+    .fare-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #cbd5e1;
+      gap: 15px;
+    }
+
+    .fare-total {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+      border-top: 1px dashed rgba(16, 185, 129, 0.4);
+      padding-top: 6px;
+    }
+
+    .fare-error {
+      color: #fca5a5;
+      background: rgba(239, 68, 68, 0.08);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
     .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px); display: grid; place-items: center;
-      z-index: 1000; opacity: 0; pointer-events: none; transition: 0.3s ease;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: grid;
+      place-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s ease;
+      padding: 20px;
     }
-    .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
     .modal {
-      background: var(--card); border: 1px solid var(--line-bright);
-      padding: 32px; border-radius: var(--radius); max-width: 450px; text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      background: var(--card);
+      border: 1px solid var(--line-bright);
+      padding: 32px;
+      border-radius: var(--radius);
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
     }
-    .modal i { color: var(--accent); width: 64px; height: 64px; margin-bottom: 16px; }
 
-    /* Service Cards */
-    .section { padding: 80px 0; }
-    .section-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
-    .section-header h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
-    .section-header p { color: var(--muted); }
+    .modal i {
+      color: var(--accent);
+      width: 64px;
+      height: 64px;
+      margin-bottom: 16px;
+    }
 
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .section-header h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
     .card {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 28px; transition: 0.3s;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: 0.3s;
     }
-    .card:hover { border-color: var(--line-bright); transform: translateY(-4px); background: var(--card-hover); }
+
+    .card:hover {
+      border-color: var(--line-bright);
+      transform: translateY(-4px);
+      background: var(--card-hover);
+    }
+
     .card-icon {
-      width: 50px; height: 50px; border-radius: 12px; background: rgba(245, 184, 0, 0.1);
-      color: var(--brand); display: grid; place-items: center; margin-bottom: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: rgba(245, 184, 0, 0.1);
+      color: var(--brand);
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
     }
-    .card h3 { font-size: 19px; margin-bottom: 10px; }
-    .card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
 
-    /* Coverage Chips */
-    .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       DISTRICT COVERAGE
+    ========================= */
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
     .chip {
-      background: rgba(255,255,255,0.04); border: 1px solid var(--line);
-      padding: 10px 18px; border-radius: 99px; font-size: 14px; font-weight: 600;
-      display: flex; align-items: center; gap: 8px; transition: 0.2s;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line);
+      padding: 10px 18px;
+      border-radius: 99px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
     }
-    .chip:hover { border-color: var(--brand); color: var(--brand); background: rgba(245, 184, 0, 0.05); }
 
-    /* FAQ Details */
-    .faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 16px; }
+    .chip:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: rgba(245, 184, 0, 0.05);
+    }
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
     details {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: 12px; padding: 18px 24px; cursor: pointer; transition: 0.2s;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 24px;
+      cursor: pointer;
+      transition: 0.2s;
     }
-    details[open] { border-color: var(--brand); }
-    summary { font-weight: 700; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-    summary::-webkit-details-marker { display: none; }
-    details p { margin-top: 12px; color: var(--muted); font-size: 14px; }
 
-    /* Mobile Sticky CTA Footer */
+    details[open] {
+      border-color: var(--brand);
+    }
+
+    summary {
+      font-weight: 700;
+      font-size: 16px;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       MOBILE CTA
+    ========================= */
+
     .mobile-cta {
-      position: fixed; bottom: 0; left: 0; right: 0; background: #081019;
-      border-top: 1px solid var(--line-bright); padding: 12px 20px; z-index: 99;
-      display: none; grid-template-columns: 1fr 1fr; gap: 12px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #081019;
+      border-top: 1px solid var(--line-bright);
+      padding: 12px 20px;
+      z-index: 99;
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
     footer {
-      border-top: 1px solid var(--line); padding: 40px 0 100px;
-      color: var(--muted); font-size: 14px; text-align: center;
+      border-top: 1px solid var(--line);
+      padding: 40px 0 100px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
     }
 
-    /* Responsive Breakpoints */
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
     @media (max-width: 992px) {
-      .hero-grid, .grid-3 { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .mobile-cta { display: grid; }
-      body { padding-bottom: 60px; }
+      .hero-grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-cta {
+        display: grid;
+      }
+
+      body {
+        padding-bottom: 60px;
+      }
     }
+
     @media (max-width: 576px) {
-      .form-row { grid-template-columns: 1fr; }
-      .hero-card { padding: 24px; }
-      .booking-card { padding: 20px; }
-      .hero-stats { grid-template-columns: 1fr; }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .booking-card {
+        padding: 20px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-actions .btn span {
+        display: none;
+      }
+
+      .nav-actions .btn {
+        padding: 11px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Header -->
+  <!-- =========================
+       HEADER
+  ========================= -->
+
   <header class="topbar">
     <div class="container nav">
+
       <a href="#" class="logo">
-        <div class="logo-badge"><i data-lucide="car"></i></div>
-        <span>Tamil<span style="color:var(--brand)">DropTaxi</span></span>
+        <div class="logo-badge">
+          <i data-lucide="car"></i>
+        </div>
+
+        <span>
+          Tamil<span style="color:var(--brand)">DropTaxi</span>
+        </span>
       </a>
+
       <nav class="nav-links">
         <a href="#book">Book Taxi</a>
         <a href="#rates">Tariff</a>
-        <a href="#routes">Popular Routes</a>
+        <a href="#routes">Districts</a>
         <a href="#services">Services</a>
         <a href="#faq">FAQ</a>
       </nav>
+
       <div class="nav-actions">
-        <a href="tel:+917708143163" class="btn btn-call"><i data-lucide="phone"></i> <span>77081 43163</span></a>
+        <a href="tel:+917708143163" class="btn btn-call">
+          <i data-lucide="phone"></i>
+          <span>77081 43163</span>
+        </a>
       </div>
+
     </div>
   </header>
 
+
   <main class="container">
-    <!-- Hero Section -->
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section class="hero">
+
       <div class="hero-grid">
+
         <div class="hero-card">
-          <span class="badge"><i data-lucide="shield-check"></i> 100% One-Way Fare Only</span>
-          <h1>Intercity Drop Taxi Across South India</h1>
-          <p class="lead">Pay only for the distance dropped! Seamless intercity cabs from anywhere in Tamil Nadu to Bangalore, Tirupati, & Nellore.</p>
-          
+
+          <span class="badge">
+            <i data-lucide="shield-check"></i>
+            100% One-Way Fare Only
+          </span>
+
+          <h1>
+            Intercity Drop Taxi Across Tamil Nadu
+          </h1>
+
+          <p class="lead">
+            Pay only for the distance travelled. Book seamless
+            intercity cabs across all Tamil Nadu districts,
+            Bangalore, Tirupati and Nellore.
+          </p>
+
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a href="#book" class="btn btn-brand"><i data-lucide="calendar"></i> Book Online</a>
-            <a href="https://wa.me/917708143163" class="btn btn-wa" target="_blank"><i data-lucide="message-square"></i> WhatsApp</a>
+
+            <a href="#book" class="btn btn-brand">
+              <i data-lucide="calendar"></i>
+              Book Online
+            </a>
+
+            <a
+              href="https://wa.me/917708143163"
+              class="btn btn-wa"
+              target="_blank"
+              rel="noopener"
+            >
+              <i data-lucide="message-square"></i>
+              WhatsApp
+            </a>
+
           </div>
 
           <div class="hero-stats">
+
             <div class="stat-box">
               <strong>₹14/km</strong>
               <span>Starting Sedan Rate</span>
             </div>
+
             <div class="stat-box">
               <strong>0 Return</strong>
               <span>No empty-trip charges</span>
             </div>
+
             <div class="stat-box">
-              <strong>24 / 7</strong>
-              <span>On-Time Pickup</span>
+              <strong>38 Districts</strong>
+              <span>Tamil Nadu Coverage</span>
             </div>
+
           </div>
+
         </div>
 
-        <!-- Booking Form Card -->
+
+        <!-- =========================
+             BOOKING FORM
+        ========================= -->
+
         <div class="booking-card" id="book">
-          <h2><i data-lucide="navigation" style="color:var(--brand); inline-size:20px;"></i> Instant Fare Calculator</h2>
-          <p>Get accurate KM calculation and locked fare instantly.</p>
 
-          <form id="taxiForm" class="form-grid" onsubmit="handleBooking(event)">
+          <h2>
+            <i
+              data-lucide="navigation"
+              style="color:var(--brand); inline-size:20px;"
+            ></i>
+
+            Offline Fare Calculator
+          </h2>
+
+          <p>
+            Select your districts to calculate the estimated road distance
+            and fare instantly.
+          </p>
+
+          <form
+            id="taxiForm"
+            class="form-grid"
+            onsubmit="handleBooking(event)"
+          >
+
+            <!-- Name / Phone -->
+
             <div class="form-row">
+
               <div class="field">
-                <label for="name"><i data-lucide="user"></i> Name</label>
-                <input type="text" id="name" placeholder="John Doe" required />
+
+                <label for="name">
+                  <i data-lucide="user"></i>
+                  Name
+                </label>
+
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="John Doe"
+                  required
+                />
+
               </div>
+
+
               <div class="field">
-                <label for="phone"><i data-lucide="phone"></i> Mobile Number</label>
-                <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit number" required />
+
+                <label for="phone">
+                  <i data-lucide="phone"></i>
+                  Mobile Number
+                </label>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  pattern="[0-9]{10}"
+                  placeholder="10-digit number"
+                  required
+                />
+
               </div>
+
             </div>
 
-            <div class="form-row">
-              <div class="field">
-                <label for="pickup"><i data-lucide="map-pin"></i> Pickup City/Town</label>
-                <input type="text" id="pickup" placeholder="e.g., Chennai" required autocomplete="off" />
-                <div id="pickup-list" class="autocomplete-items"></div>
-              </div>
-              <div class="field">
-                <label for="drop"><i data-lucide="map-pin-off"></i> Drop Location</label>
-                <input type="text" id="drop" placeholder="e.g., Bangalore" required autocomplete="off" />
-                <div id="drop-list" class="autocomplete-items"></div>
-              </div>
-            </div>
+
+            <!-- Pickup / Drop -->
 
             <div class="form-row">
+
               <div class="field">
-                <label for="date"><i data-lucide="calendar"></i> Travel Date</label>
-                <input type="date" id="date" required />
+
+                <label for="pickup">
+                  <i data-lucide="map-pin"></i>
+                  Pickup District
+                </label>
+
+                <input
+                  type="text"
+                  id="pickup"
+                  placeholder="e.g. Chennai"
+                  required
+                  autocomplete="off"
+                />
+
+                <div
+                  id="pickup-list"
+                  class="autocomplete-items"
+                ></div>
+
               </div>
+
+
               <div class="field">
-                <label for="time"><i data-lucide="clock"></i> Travel Time</label>
-                <input type="time" id="time" required />
+
+                <label for="drop">
+                  <i data-lucide="map-pin-off"></i>
+                  Drop District
+                </label>
+
+                <input
+                  type="text"
+                  id="drop"
+                  placeholder="e.g. Madurai"
+                  required
+                  autocomplete="off"
+                />
+
+                <div
+                  id="drop-list"
+                  class="autocomplete-items"
+                ></div>
+
               </div>
+
             </div>
 
+
+            <!-- Date / Time -->
+
             <div class="form-row">
+
               <div class="field">
-                <label for="vehicle"><i data-lucide="car"></i> Vehicle Category</label>
-                <select id="vehicle" onchange="calculateFare()">
-                  <option value="sedan">Sedan (Etios/Dzire) - ₹14/km</option>
-                  <option value="suv">SUV (Innova/Ertiga) - ₹19/km</option>
-                  <option value="traveller">Tempo Traveller - ₹26/km</option>
+
+                <label for="date">
+                  <i data-lucide="calendar"></i>
+                  Travel Date
+                </label>
+
+                <input
+                  type="date"
+                  id="date"
+                  required
+                />
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="time">
+                  <i data-lucide="clock"></i>
+                  Travel Time
+                </label>
+
+                <input
+                  type="time"
+                  id="time"
+                  required
+                />
+
+              </div>
+
+            </div>
+
+
+            <!-- Vehicle / Passengers -->
+
+            <div class="form-row">
+
+              <div class="field">
+
+                <label for="vehicle">
+                  <i data-lucide="car"></i>
+                  Vehicle Category
+                </label>
+
+                <select
+                  id="vehicle"
+                  onchange="calculateFare()"
+                >
+
+                  <option value="sedan">
+                    Sedan (Etios/Dzire) - ₹14/km
+                  </option>
+
+                  <option value="suv">
+                    SUV (Innova/Ertiga) - ₹19/km
+                  </option>
+
+                  <option value="traveller">
+                    Tempo Traveller - ₹26/km
+                  </option>
+
                 </select>
+
               </div>
+
+
               <div class="field">
-                <label for="passengers"><i data-lucide="users"></i> Passengers</label>
+
+                <label for="passengers">
+                  <i data-lucide="users"></i>
+                  Passengers
+                </label>
+
                 <select id="passengers">
-                  <option>1 - 4 Passengers</option>
-                  <option>5 - 7 Passengers</option>
-                  <option>8+ Passengers</option>
+
+                  <option>
+                    1 - 4 Passengers
+                  </option>
+
+                  <option>
+                    5 - 7 Passengers
+                  </option>
+
+                  <option>
+                    8+ Passengers
+                  </option>
+
                 </select>
+
               </div>
+
             </div>
 
-            <!-- Dynamic Fare Breakdown -->
+
+            <!-- Fare Breakdown -->
+
             <div class="fare-box" id="fareDisplay">
+
               <div class="fare-row">
-                <span>Estimated Route Distance:</span>
-                <strong id="distanceText">0 km</strong>
+
+                <span>
+                  Estimated Route Distance:
+                </span>
+
+                <strong id="distanceText">
+                  0 km
+                </strong>
+
               </div>
+
+
               <div class="fare-row">
-                <span>Base Driver Allowance:</span>
-                <span>₹400</span>
+
+                <span>
+                  Base Driver Allowance:
+                </span>
+
+                <span>
+                  ₹400
+                </span>
+
               </div>
+
+
               <div class="fare-row fare-total">
-                <span>Estimated Fare:</span>
-                <span id="fareText">₹0</span>
+
+                <span>
+                  Estimated Fare:
+                </span>
+
+                <span id="fareText">
+                  ₹0
+                </span>
+
               </div>
+
             </div>
 
-            <button type="submit" class="btn btn-brand" style="width:100%;"><i data-lucide="check-circle"></i> Confirm Taxi Booking</button>
+
+            <button
+              type="submit"
+              class="btn btn-brand"
+              style="width:100%;"
+            >
+
+              <i data-lucide="check-circle"></i>
+
+              Confirm Taxi Booking
+
+            </button>
+
           </form>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- Services Section -->
+
+    <!-- =========================
+         SERVICES
+    ========================= -->
+
     <section class="section" id="services">
+
       <div class="section-header">
-        <h2>Why Choose Tamil Drop Taxi?</h2>
-        <p>Premium intercity travel experience designed for ultimate comfort and cost savings.</p>
+
+        <h2>
+          Why Choose Tamil Drop Taxi?
+        </h2>
+
+        <p>
+          Premium intercity travel experience designed
+          for comfort and cost savings.
+        </p>
+
       </div>
+
+
       <div class="grid-3">
+
         <div class="card">
-          <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
-          <h3>One-Way Charges</h3>
-          <p>Never pay double fare for intercity rides. You only pay for the exact distance travelled from pickup to drop off.</p>
+
+          <div class="card-icon">
+            <i data-lucide="dollar-sign"></i>
+          </div>
+
+          <h3>
+            One-Way Charges
+          </h3>
+
+          <p>
+            Never pay double fare for intercity rides.
+            You only pay for the calculated one-way distance.
+          </p>
+
         </div>
+
+
         <div class="card">
-          <div class="card-icon"><i data-lucide="clock"></i></div>
-          <h3>24/7 On-Time Pickup</h3>
-          <p>Doorstep pickup anywhere across Tamil Nadu with zero delay guaranteed. Clean vehicles with verified drivers.</p>
+
+          <div class="card-icon">
+            <i data-lucide="clock"></i>
+          </div>
+
+          <h3>
+            24/7 Pickup
+          </h3>
+
+          <p>
+            Doorstep pickup across Tamil Nadu with
+            clean vehicles and experienced drivers.
+          </p>
+
         </div>
+
+
         <div class="card">
-          <div class="card-icon"><i data-lucide="shield"></i></div>
-          <h3>Transparent Billing</h3>
-          <p>No hidden charges, zero surge pricing during peak hours, and clear toll-tax disclosures before ride commencement.</p>
+
+          <div class="card-icon">
+            <i data-lucide="shield"></i>
+          </div>
+
+          <h3>
+            Transparent Billing
+          </h3>
+
+          <p>
+            Clear kilometre-based pricing with
+            driver allowance shown before booking.
+          </p>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- Coverage Routes Section -->
+
+    <!-- =========================
+         ALL 38 DISTRICTS
+    ========================= -->
+
     <section class="section" id="routes">
+
       <div class="section-header">
-        <h2>Major Coverage Areas</h2>
-        <p>Providing seamless connectivity across Tamil Nadu and neighbouring southern states.</p>
+
+        <h2>
+          All Tamil Nadu Districts
+        </h2>
+
+        <p>
+          Offline district-based distance calculation
+          covering all 38 Tamil Nadu districts.
+        </p>
+
       </div>
-      <div class="chips">
-        <span class="chip"><i data-lucide="map-pin"></i> Chennai</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Coimbatore</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Madurai</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Trichy</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Salem</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Vellore</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Tirunelveli</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Erode</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Bangalore</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Tirupati</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Nellore</span>
-        <span class="chip"><i data-lucide="map-pin"></i> Pondicherry</span>
-      </div>
+
+
+      <div class="chips" id="districtChips"></div>
+
     </section>
 
-    <!-- FAQ Section -->
+
+    <!-- =========================
+         FAQ
+    ========================= -->
+
     <section class="section" id="faq">
+
       <div class="section-header">
-        <h2>Frequently Asked Questions</h2>
-        <p>Got questions? We've got clear, direct answers.</p>
+
+        <h2>
+          Frequently Asked Questions
+        </h2>
+
+        <p>
+          Got questions? We've got clear answers.
+        </p>
+
       </div>
+
+
       <div class="faq-list">
+
         <details>
-          <summary>How is the one-way distance calculated? <i data-lucide="chevron-down"></i></summary>
-          <p>We calculate distance using real-time spatial matrix technology between your precise pickup location and drop destination. You pay solely for that calculated kilometer distance.</p>
+
+          <summary>
+            How is the distance calculated?
+            <i data-lucide="chevron-down"></i>
+          </summary>
+
+          <p>
+            The website uses a locally stored offline distance
+            database. Distances are approximate road distances
+            between district headquarters. No external API is used.
+          </p>
+
         </details>
+
+
         <details>
-          <summary>Are Toll fees and State Permit Taxes included? <i data-lucide="chevron-down"></i></summary>
-          <p>Toll fees and Interstate Permit Charges (for Andhra Pradesh/Karnataka entries) are collected as actuals based on government highway norms, paid directly at toll booths.</p>
+
+          <summary>
+            Do I need internet for the distance calculation?
+            <i data-lucide="chevron-down"></i>
+          </summary>
+
+          <p>
+            No. The distance database and calculation logic
+            are stored directly inside the website JavaScript.
+          </p>
+
         </details>
+
+
         <details>
-          <summary>Is there any night driving charge or driver allowance? <i data-lucide="chevron-down"></i></summary>
-          <p>A standard flat driver bata of ₹400 per day applies to outstation trips to cover driver expenses.</p>
+
+          <summary>
+            Are toll fees included?
+            <i data-lucide="chevron-down"></i>
+          </summary>
+
+          <p>
+            No. Toll charges and applicable interstate permits
+            should be collected separately as actual charges.
+          </p>
+
         </details>
+
+
+        <details>
+
+          <summary>
+            Is driver allowance included?
+            <i data-lucide="chevron-down"></i>
+          </summary>
+
+          <p>
+            A flat ₹400 driver allowance is added to the
+            calculated one-way fare.
+          </p>
+
+        </details>
+
       </div>
+
     </section>
+
   </main>
 
-  <!-- Mobile Sticky Footer CTA -->
+
+  <!-- =========================
+       MOBILE CTA
+  ========================= -->
+
   <div class="mobile-cta">
-    <a href="tel:+917708143163" class="btn btn-call"><i data-lucide="phone"></i> Call Now</a>
-    <a href="https://wa.me/917708143163" class="btn btn-wa" target="_blank"><i data-lucide="message-square"></i> WhatsApp</a>
+
+    <a
+      href="tel:+917708143163"
+      class="btn btn-call"
+    >
+      <i data-lucide="phone"></i>
+      Call Now
+    </a>
+
+    <a
+      href="https://wa.me/917708143163"
+      class="btn btn-wa"
+      target="_blank"
+      rel="noopener"
+    >
+      <i data-lucide="message-square"></i>
+      WhatsApp
+    </a>
+
   </div>
 
-  <!-- Booking Confirmation Modal -->
-  <div class="modal-overlay" id="confirmModal">
+
+  <!-- =========================
+       BOOKING MODAL
+  ========================= -->
+
+  <div
+    class="modal-overlay"
+    id="confirmModal"
+  >
+
     <div class="modal">
+
       <i data-lucide="check-circle-2"></i>
-      <h2>Booking Request Received!</h2>
-      <p style="margin: 12px 0 24px; color: var(--muted);" id="modalDetails"></p>
-      <button class="btn btn-brand" onclick="closeModal()">Got it, thanks!</button>
+
+      <h2>
+        Booking Request Received!
+      </h2>
+
+      <p
+        style="margin:12px 0 24px;color:var(--muted);"
+        id="modalDetails"
+      ></p>
+
+      <button
+        class="btn btn-brand"
+        onclick="closeModal()"
+      >
+        Got it, thanks!
+      </button>
+
     </div>
+
   </div>
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
 
   <footer>
+
     <div class="container">
-      <p>© 2026 Tamil Drop Taxi Services. All rights reserved. Intercity One-Way Cabs in South India.</p>
+
+      <p>
+        © 2026 Tamil Drop Taxi Services.
+        All rights reserved.
+        Intercity One-Way Cabs in South India.
+      </p>
+
     </div>
+
   </footer>
 
+
   <script>
-    // Initialize Lucide Icons
+
+    /* ==========================================
+       LUCIDE
+    ========================================== */
+
     lucide.createIcons();
 
-    // City & Matrix Distance Fallback Dataset
-    const CITIES = [
-      "Chennai", "Coimbatore", "Madurai", "Trichy", "Salem", 
-      "Tirunelveli", "Vellore", "Erode", "Tuticorin", "Thanjavur",
-      "Kanyakumari", "Dindigul", "Bangalore", "Tirupati", "Nellore", "Pondicherry"
+
+    /* ==========================================
+       ALL 38 TAMIL NADU DISTRICTS
+    ========================================== */
+
+    const TAMIL_NADU_DISTRICTS = [
+
+      "Ariyalur",
+      "Chengalpattu",
+      "Chennai",
+      "Coimbatore",
+      "Cuddalore",
+      "Dharmapuri",
+      "Dindigul",
+      "Erode",
+      "Kallakurichi",
+      "Kancheepuram",
+      "Karur",
+      "Krishnagiri",
+      "Madurai",
+      "Mayiladuthurai",
+      "Nagapattinam",
+      "Kanniyakumari",
+      "Namakkal",
+      "Perambalur",
+      "Pudukottai",
+      "Ramanathapuram",
+      "Ranipet",
+      "Salem",
+      "Sivaganga",
+      "Tenkasi",
+      "Thanjavur",
+      "Theni",
+      "Thoothukudi",
+      "Tiruchirappalli",
+      "Tirunelveli",
+      "Tirupathur",
+      "Tiruppur",
+      "Tiruvallur",
+      "Tiruvannamalai",
+      "Tiruvarur",
+      "Vellore",
+      "Viluppuram",
+      "Virudhunagar"
+
     ];
 
+
+    /* ==========================================
+       ADDITIONAL OUTSIDE DESTINATIONS
+    ========================================== */
+
+    const OTHER_DESTINATIONS = [
+
+      "Bangalore",
+      "Tirupati",
+      "Nellore",
+      "Pondicherry"
+
+    ];
+
+
+    /* ==========================================
+       ALL LOCATIONS
+    ========================================== */
+
+    const CITIES = [
+
+      ...TAMIL_NADU_DISTRICTS,
+      ...OTHER_DESTINATIONS
+
+    ];
+
+
+    /* ==========================================
+       DISTANCE DATABASE
+
+       Format:
+       "A|B": distance
+
+       Only one direction is required.
+       The calculator automatically checks
+       both directions.
+
+       These are approximate road distances
+       between district headquarters.
+    ========================================== */
+
     const DISTANCE_MATRIX = {
-      "chennai-bangalore": 346,
-      "chennai-tirupati": 135,
-      "chennai-nellore": 175,
-      "chennai-coimbatore": 505,
-      "chennai-madurai": 460,
-      "chennai-trichy": 330,
-      "chennai-salem": 340,
-      "coimbatore-bangalore": 365,
-      "madurai-bangalore": 435,
-      "trichy-bangalore": 385,
-      "salem-bangalore": 200,
-      "vellore-bangalore": 210
+
+      /* ==============================
+         CHENNAI REGION
+      ============================== */
+
+      "Chennai|Chengalpattu": 60,
+      "Chennai|Kancheepuram": 72,
+      "Chennai|Tiruvallur": 45,
+      "Chennai|Ranipet": 115,
+      "Chennai|Vellore": 140,
+      "Chennai|Tirupathur": 185,
+      "Chennai|Tiruvannamalai": 195,
+      "Chennai|Viluppuram": 165,
+      "Chennai|Kallakurichi": 230,
+      "Chennai|Cuddalore": 185,
+      "Chennai|Tiruchirappalli": 330,
+      "Chennai|Perambalur": 285,
+      "Chennai|Ariyalur": 300,
+      "Chennai|Thanjavur": 345,
+      "Chennai|Tiruvarur": 325,
+      "Chennai|Nagapattinam": 315,
+      "Chennai|Mayiladuthurai": 280,
+      "Chennai|Pudukottai": 390,
+      "Chennai|Salem": 340,
+      "Chennai|Namakkal": 405,
+      "Chennai|Karur": 390,
+      "Chennai|Erode": 405,
+      "Chennai|Tiruppur": 430,
+      "Chennai|Coimbatore": 505,
+      "Chennai|Dharmapuri": 315,
+      "Chennai|Krishnagiri": 255,
+      "Chennai|Dindigul": 465,
+      "Chennai|Madurai": 460,
+      "Chennai|Theni": 500,
+      "Chennai|Sivaganga": 470,
+      "Chennai|Ramanathapuram": 550,
+      "Chennai|Virudhunagar": 535,
+      "Chennai|Tirunelveli": 625,
+      "Chennai|Tenkasi": 620,
+      "Chennai|Thoothukudi": 600,
+      "Chennai|Kanniyakumari": 700,
+
+      /* ==============================
+         CHENGALPATTU
+      ============================== */
+
+      "Chengalpattu|Kancheepuram": 55,
+      "Chengalpattu|Tiruvallur": 95,
+      "Chengalpattu|Ranipet": 105,
+      "Chengalpattu|Vellore": 135,
+      "Chengalpattu|Tiruvannamalai": 150,
+      "Chengalpattu|Viluppuram": 110,
+      "Chengalpattu|Cuddalore": 135,
+      "Chengalpattu|Tiruchirappalli": 275,
+      "Chengalpattu|Pondicherry": 105,
+
+      /* ==============================
+         KANCHEEPURAM
+      ============================== */
+
+      "Kancheepuram|Tiruvallur": 65,
+      "Kancheepuram|Ranipet": 60,
+      "Kancheepuram|Vellore": 95,
+      "Kancheepuram|Tirupathur": 140,
+      "Kancheepuram|Tiruvannamalai": 135,
+      "Kancheepuram|Viluppuram": 135,
+      "Kancheepuram|Cuddalore": 155,
+
+      /* ==============================
+         VELLORE / RANIPET
+      ============================== */
+
+      "Vellore|Ranipet": 25,
+      "Vellore|Tirupathur": 70,
+      "Vellore|Tiruvannamalai": 90,
+      "Vellore|Krishnagiri": 105,
+      "Vellore|Dharmapuri": 175,
+      "Vellore|Salem": 200,
+      "Vellore|Tirupati": 135,
+      "Vellore|Bangalore": 210,
+
+      "Ranipet|Tirupathur": 65,
+      "Ranipet|Tiruvannamalai": 75,
+
+      /* ==============================
+         TIRUPATHUR / KRISHNAGIRI
+      ============================== */
+
+      "Tirupathur|Krishnagiri": 80,
+      "Tirupathur|Dharmapuri": 135,
+      "Tirupathur|Salem": 165,
+      "Tirupathur|Bangalore": 145,
+
+      "Krishnagiri|Dharmapuri": 95,
+      "Krishnagiri|Salem": 150,
+      "Krishnagiri|Bangalore": 95,
+
+      /* ==============================
+         TIRUVANNAMALAI
+      ============================== */
+
+      "Tiruvannamalai|Viluppuram": 65,
+      "Tiruvannamalai|Kallakurichi": 105,
+      "Tiruvannamalai|Cuddalore": 120,
+      "Tiruvannamalai|Salem": 170,
+      "Tiruvannamalai|Dharmapuri": 185,
+
+      /* ==============================
+         VILUPPURAM / KALLAKURICHI
+      ============================== */
+
+      "Viluppuram|Kallakurichi": 70,
+      "Viluppuram|Cuddalore": 45,
+      "Viluppuram|Pondicherry": 40,
+      "Viluppuram|Salem": 170,
+      "Viluppuram|Tiruchirappalli": 180,
+
+      "Kallakurichi|Salem": 110,
+      "Kallakurichi|Namakkal": 175,
+      "Kallakurichi|Tiruchirappalli": 145,
+
+      /* ==============================
+         CUDDALORE / PONDICHERRY
+      ============================== */
+
+      "Cuddalore|Pondicherry": 25,
+      "Cuddalore|Chidambaram": 45,
+      "Cuddalore|Thanjavur": 150,
+      "Cuddalore|Mayiladuthurai": 80,
+      "Cuddalore|Nagapattinam": 115,
+
+      /* ==============================
+         CENTRAL TAMIL NADU
+      ============================== */
+
+      "Tiruchirappalli|Perambalur": 60,
+      "Tiruchirappalli|Ariyalur": 80,
+      "Tiruchirappalli|Thanjavur": 60,
+      "Tiruchirappalli|Pudukottai": 55,
+      "Tiruchirappalli|Tiruvarur": 115,
+      "Tiruchirappalli|Nagapattinam": 140,
+      "Tiruchirappalli|Mayiladuthurai": 115,
+      "Tiruchirappalli|Karur": 80,
+      "Tiruchirappalli|Namakkal": 115,
+      "Tiruchirappalli|Salem": 135,
+      "Tiruchirappalli|Dindigul": 100,
+      "Tiruchirappalli|Madurai": 135,
+
+      "Perambalur|Ariyalur": 35,
+      "Perambalur|Salem": 115,
+      "Perambalur|Namakkal": 105,
+      "Perambalur|Karur": 95,
+
+      "Ariyalur|Thanjavur": 95,
+      "Ariyalur|Mayiladuthurai": 80,
+      "Ariyalur|Nagapattinam": 110,
+
+      /* ==============================
+         THANJAVUR / DELTA
+      ============================== */
+
+      "Thanjavur|Pudukottai": 60,
+      "Thanjavur|Tiruvarur": 60,
+      "Thanjavur|Nagapattinam": 85,
+      "Thanjavur|Mayiladuthurai": 80,
+      "Thanjavur|Kumbakonam": 40,
+
+      "Tiruvarur|Nagapattinam": 30,
+      "Tiruvarur|Mayiladuthurai": 45,
+
+      "Nagapattinam|Mayiladuthurai": 45,
+
+      /* ==============================
+         SALEM / NAMAKKAL / KARUR
+      ============================== */
+
+      "Salem|Namakkal": 55,
+      "Salem|Karur": 95,
+      "Salem|Erode": 65,
+      "Salem|Tiruppur": 120,
+      "Salem|Coimbatore": 165,
+      "Salem|Dharmapuri": 70,
+      "Salem|Dindigul": 190,
+      "Salem|Madurai": 230,
+
+      "Namakkal|Karur": 55,
+      "Namakkal|Erode": 75,
+      "Namakkal|Tiruppur": 110,
+      "Namakkal|Coimbatore": 150,
+      "Namakkal|Dindigul": 150,
+      "Namakkal|Madurai": 195,
+
+      "Karur|Erode": 65,
+      "Karur|Tiruppur": 105,
+      "Karur|Coimbatore": 140,
+      "Karur|Dindigul": 100,
+      "Karur|Madurai": 145,
+
+      /* ==============================
+         ERODE / COIMBATORE
+      ============================== */
+
+      "Erode|Tiruppur": 55,
+      "Erode|Coimbatore": 100,
+      "Erode|Dindigul": 160,
+      "Erode|Madurai": 205,
+      "Erode|Bangalore": 250,
+
+      "Tiruppur|Coimbatore": 55,
+      "Tiruppur|Dindigul": 145,
+      "Tiruppur|Madurai": 195,
+      "Tiruppur|Theni": 230,
+      "Tiruppur|Bangalore": 300,
+
+      "Coimbatore|Dindigul": 155,
+      "Coimbatore|Madurai": 215,
+      "Coimbatore|Theni": 250,
+      "Coimbatore|Bangalore": 365,
+
+      /* ==============================
+         DHARMAPURI
+      ============================== */
+
+      "Dharmapuri|Salem": 70,
+      "Dharmapuri|Namakkal": 125,
+      "Dharmapuri|Erode": 135,
+      "Dharmapuri|Bangalore": 175,
+
+      /* ==============================
+         DINDIGUL / MADURAI
+      ============================== */
+
+      "Dindigul|Madurai": 65,
+      "Dindigul|Theni": 75,
+      "Dindigul|Sivaganga": 115,
+      "Dindigul|Virudhunagar": 125,
+      "Dindigul|Ramanathapuram": 205,
+      "Dindigul|Tirunelveli": 270,
+
+      "Madurai|Theni": 75,
+      "Madurai|Sivaganga": 50,
+      "Madurai|Virudhunagar": 60,
+      "Madurai|Ramanathapuram": 125,
+      "Madurai|Tirunelveli": 165,
+      "Madurai|Tenkasi": 180,
+      "Madurai|Thoothukudi": 145,
+      "Madurai|Kanniyakumari": 245,
+      "Madurai|Bangalore": 435,
+
+      /* ==============================
+         SOUTHERN DISTRICTS
+      ============================== */
+
+      "Theni|Sivaganga": 125,
+      "Theni|Virudhunagar": 135,
+      "Theni|Tirunelveli": 225,
+      "Theni|Tenkasi": 215,
+
+      "Sivaganga|Ramanathapuram": 90,
+      "Sivaganga|Virudhunagar": 95,
+      "Sivaganga|Tirunelveli": 190,
+      "Sivaganga|Thoothukudi": 150,
+
+      "Ramanathapuram|Thoothukudi": 115,
+      "Ramanathapuram|Tirunelveli": 170,
+      "Ramanathapuram|Kanniyakumari": 230,
+
+      "Virudhunagar|Tirunelveli": 115,
+      "Virudhunagar|Tenkasi": 120,
+      "Virudhunagar|Thoothukudi": 105,
+
+      "Tirunelveli|Tenkasi": 55,
+      "Tirunelveli|Thoothukudi": 60,
+      "Tirunelveli|Kanniyakumari": 90,
+
+      "Tenkasi|Thoothukudi": 110,
+      "Tenkasi|Kanniyakumari": 150,
+
+      "Thoothukudi|Kanniyakumari": 125,
+
+      /* ==============================
+         OTHER DESTINATIONS
+      ============================== */
+
+      "Chennai|Bangalore": 346,
+      "Chennai|Tirupati": 135,
+      "Chennai|Nellore": 175,
+      "Chennai|Pondicherry": 155,
+
+      "Bangalore|Coimbatore": 365,
+      "Bangalore|Salem": 200,
+      "Bangalore|Dharmapuri": 175,
+      "Bangalore|Krishnagiri": 95,
+      "Bangalore|Tirupathur": 145,
+      "Bangalore|Vellore": 210,
+      "Bangalore|Erode": 250,
+      "Bangalore|Tiruppur": 300,
+      "Bangalore|Namakkal": 320,
+      "Bangalore|Karur": 330,
+      "Bangalore|Tiruchirappalli": 385,
+      "Bangalore|Dindigul": 430,
+      "Bangalore|Madurai": 435,
+
+      "Tirupati|Vellore": 135,
+      "Tirupati|Chennai": 135,
+      "Tirupati|Tiruvallur": 145,
+      "Tirupati|Kancheepuram": 170,
+      "Tirupati|Ranipet": 145,
+
+      "Nellore|Chennai": 175,
+      "Nellore|Tiruvallur": 145,
+      "Nellore|Tirupati": 130,
+
+      "Pondicherry|Chennai": 155,
+      "Pondicherry|Cuddalore": 25,
+      "Pondicherry|Viluppuram": 40,
+      "Pondicherry|Chengalpattu": 105
+
     };
 
-    // Autocomplete UI logic
-    function setupAutocomplete(inputId, listId) {
-      const input = document.getElementById(inputId);
-      const list = document.getElementById(listId);
 
-      input.addEventListener('input', () => {
-        const val = input.value.trim().toLowerCase();
-        list.innerHTML = '';
-        if (!val) return;
+    /* ==========================================
+       DISTANCE LOOKUP
 
-        const matches = CITIES.filter(c => c.toLowerCase().includes(val));
-        matches.forEach(city => {
-          const item = document.createElement('div');
-          item.textContent = city;
-          item.onclick = () => {
-            input.value = city;
-            list.innerHTML = '';
-            calculateFare();
-          };
-          list.appendChild(item);
-        });
-      });
+       Checks both:
+       Chennai|Madurai
+       Madurai|Chennai
 
-      document.addEventListener('click', (e) => {
-        if (e.target !== input) list.innerHTML = '';
-      });
-    }
+       Also normalizes capitalization.
+    ========================================== */
 
-    setupAutocomplete('pickup', 'pickup-list');
-    setupAutocomplete('drop', 'drop-list');
-
-    // Route Distance Calculation Engine
     function calculateDistanceKM(p1, p2) {
-      if (!p1 || !p2) return 0;
-      const key1 = `${p1.toLowerCase()}-${p2.toLowerCase()}`;
-      const key2 = `${p2.toLowerCase()}-${p1.toLowerCase()}`;
 
-      if (DISTANCE_MATRIX[key1]) return DISTANCE_MATRIX[key1];
-      if (DISTANCE_MATRIX[key2]) return DISTANCE_MATRIX[key2];
-
-      // Smart fallback heuristic based on character difference hash if specific pair isn't listed
-      if (p1.toLowerCase() === p2.toLowerCase()) return 0;
-      let hash = 0;
-      for (let i = 0; i < p1.length + p2.length; i++) {
-        hash += (p1.charCodeAt(i % p1.length) || 0) + (p2.charCodeAt(i % p2.length) || 0);
+      if (!p1 || !p2) {
+        return 0;
       }
-      return 120 + (hash % 280); 
+
+      const a = p1.trim();
+      const b = p2.trim();
+
+      if (
+        a.toLowerCase() ===
+        b.toLowerCase()
+      ) {
+        return 0;
+      }
+
+      const directKey = `${a}|${b}`;
+      const reverseKey = `${b}|${a}`;
+
+      if (
+        Object.prototype.hasOwnProperty.call(
+          DISTANCE_MATRIX,
+          directKey
+        )
+      ) {
+        return DISTANCE_MATRIX[directKey];
+      }
+
+      if (
+        Object.prototype.hasOwnProperty.call(
+          DISTANCE_MATRIX,
+          reverseKey
+        )
+      ) {
+        return DISTANCE_MATRIX[reverseKey];
+      }
+
+      return 0;
     }
 
-    // Dynamic Fare Calculation
-    function calculateFare() {
-      const pickup = document.getElementById('pickup').value.trim();
-      const drop = document.getElementById('drop').value.trim();
-      const vehicle = document.getElementById('vehicle').value;
 
-      const km = calculateDistanceKM(pickup, drop);
-      
+    /* ==========================================
+       AUTOCOMPLETE
+    ========================================== */
+
+    function setupAutocomplete(
+      inputId,
+      listId
+    ) {
+
+      const input =
+        document.getElementById(inputId);
+
+      const list =
+        document.getElementById(listId);
+
+
+      input.addEventListener(
+        'input',
+        () => {
+
+          const val =
+            input.value
+              .trim()
+              .toLowerCase();
+
+          list.innerHTML = '';
+
+          if (!val) {
+            return;
+          }
+
+
+          const matches =
+            CITIES.filter(
+              city =>
+                city
+                  .toLowerCase()
+                  .includes(val)
+            );
+
+
+          matches.forEach(city => {
+
+            const item =
+              document.createElement('div');
+
+            item.textContent = city;
+
+
+            item.onclick = () => {
+
+              input.value = city;
+
+              list.innerHTML = '';
+
+              calculateFare();
+
+            };
+
+
+            list.appendChild(item);
+
+          });
+
+        }
+      );
+
+
+      document.addEventListener(
+        'click',
+        event => {
+
+          if (event.target !== input) {
+            list.innerHTML = '';
+          }
+
+        }
+      );
+
+    }
+
+
+    setupAutocomplete(
+      'pickup',
+      'pickup-list'
+    );
+
+    setupAutocomplete(
+      'drop',
+      'drop-list'
+    );
+
+
+    /* ==========================================
+       FARE CALCULATION
+    ========================================== */
+
+    function calculateFare() {
+
+      const pickup =
+        document
+          .getElementById('pickup')
+          .value
+          .trim();
+
+      const drop =
+        document
+          .getElementById('drop')
+          .value
+          .trim();
+
+      const vehicle =
+        document
+          .getElementById('vehicle')
+          .value;
+
+
+      const km =
+        calculateDistanceKM(
+          pickup,
+          drop
+        );
+
+
       const rates = {
+
         sedan: 14,
+
         suv: 19,
+
         traveller: 26
+
       };
 
+
       const baseBata = 400;
-      const perKmRate = rates[vehicle] || 14;
-      const totalFare = (km * perKmRate) + (km > 0 ? baseBata : 0);
 
-      document.getElementById('distanceText').textContent = `${km} km`;
-      document.getElementById('fareText').textContent = `₹${totalFare.toLocaleString('en-IN')}`;
+      const perKmRate =
+        rates[vehicle] || 14;
 
-      return { km, totalFare };
-    }
 
-    document.getElementById('pickup').addEventListener('blur', calculateFare);
-    document.getElementById('drop').addEventListener('blur', calculateFare);
+      const fareDisplay =
+        document.getElementById(
+          'fareDisplay'
+        );
 
-    // Form Handle Submission
-    function handleBooking(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const pickup = document.getElementById('pickup').value;
-      const drop = document.getElementById('drop').value;
-      const { km, totalFare } = calculateFare();
 
-      if (km === 0) {
-        alert('Please select valid pickup and drop locations.');
-        return;
+      const distanceText =
+        document.getElementById(
+          'distanceText'
+        );
+
+
+      const fareText =
+        document.getElementById(
+          'fareText'
+        );
+
+
+      /* Same location */
+
+      if (
+        pickup &&
+        drop &&
+        pickup.toLowerCase() ===
+        drop.toLowerCase()
+      ) {
+
+        distanceText.textContent =
+          '0 km';
+
+        fareText.textContent =
+          '₹0';
+
+        fareDisplay.classList.add(
+          'fare-error'
+        );
+
+        return {
+          km: 0,
+          totalFare: 0,
+          available: false
+        };
+
       }
 
-      const modalText = `Thank you ${name}! Your taxi request from ${pickup} to ${drop} (${km} km) has been logged. Estimated Fare: ₹${totalFare}. Our dispatcher will call you shortly to confirm driver details.`;
-      
-      document.getElementById('modalDetails').textContent = modalText;
-      document.getElementById('confirmModal').classList.add('active');
+
+      /* No route found */
+
+      if (
+        pickup &&
+        drop &&
+        km === 0
+      ) {
+
+        distanceText.textContent =
+          'Not available';
+
+        fareText.textContent =
+          'Select valid route';
+
+        fareDisplay.classList.add(
+          'fare-error'
+        );
+
+        return {
+          km: 0,
+          totalFare: 0,
+          available: false
+        };
+
+      }
+
+
+      fareDisplay.classList.remove(
+        'fare-error'
+      );
+
+
+      const totalFare =
+        km * perKmRate +
+        (km > 0 ? baseBata : 0);
+
+
+      distanceText.textContent =
+        `${km} km`;
+
+
+      fareText.textContent =
+        `₹${totalFare.toLocaleString('en-IN')}`;
+
+
+      return {
+
+        km,
+        totalFare,
+        available: km > 0
+
+      };
+
     }
+
+
+    /* ==========================================
+       LIVE CALCULATION
+    ========================================== */
+
+    document
+      .getElementById('pickup')
+      .addEventListener(
+        'blur',
+        calculateFare
+      );
+
+
+    document
+      .getElementById('drop')
+      .addEventListener(
+        'blur',
+        calculateFare
+      );
+
+
+    /* ==========================================
+       FORM SUBMISSION
+    ========================================== */
+
+    function handleBooking(event) {
+
+      event.preventDefault();
+
+
+      const name =
+        document
+          .getElementById('name')
+          .value
+          .trim();
+
+
+      const pickup =
+        document
+          .getElementById('pickup')
+          .value
+          .trim();
+
+
+      const drop =
+        document
+          .getElementById('drop')
+          .value
+          .trim();
+
+
+      const phone =
+        document
+          .getElementById('phone')
+          .value
+          .trim();
+
+
+      const travelDate =
+        document
+          .getElementById('date')
+          .value;
+
+
+      const travelTime =
+        document
+          .getElementById('time')
+          .value;
+
+
+      const result =
+        calculateFare();
+
+
+      if (!result.available) {
+
+        alert(
+          'Distance is not available for this route. Please select another route.'
+        );
+
+        return;
+
+      }
+
+
+      const vehicle =
+        document
+          .getElementById('vehicle')
+          .value;
+
+
+      const modalText =
+
+        `Thank you ${name}! ` +
+
+        `Your taxi request from ` +
+
+        `${pickup} to ${drop} ` +
+
+        `(${result.km} km) ` +
+
+        `for ${travelDate} at ${travelTime} ` +
+
+        `has been received. ` +
+
+        `Vehicle: ${vehicle}. ` +
+
+        `Estimated Fare: ₹${result.totalFare.toLocaleString('en-IN')}. ` +
+
+        `Our dispatcher will call ${phone} shortly to confirm driver details.`;
+
+
+      document
+        .getElementById('modalDetails')
+        .textContent = modalText;
+
+
+      document
+        .getElementById('confirmModal')
+        .classList.add('active');
+
+    }
+
+
+    /* ==========================================
+       CLOSE MODAL
+    ========================================== */
 
     function closeModal() {
-      document.getElementById('confirmModal').classList.remove('active');
-      document.getElementById('taxiForm').reset();
+
+      document
+        .getElementById('confirmModal')
+        .classList.remove('active');
+
+
+      document
+        .getElementById('taxiForm')
+        .reset();
+
+
       calculateFare();
+
     }
 
-    // Default Date auto-fill (Today)
-    document.getElementById('date').valueAsDate = new Date();
+
+    /* ==========================================
+       DISTRICT CHIPS
+    ========================================== */
+
+    const districtChips =
+      document.getElementById(
+        'districtChips'
+      );
+
+
+    TAMIL_NADU_DISTRICTS.forEach(
+      district => {
+
+        const chip =
+          document.createElement('span');
+
+        chip.className = 'chip';
+
+
+        chip.innerHTML = `
+
+          <i data-lucide="map-pin"></i>
+
+          ${district}
+
+        `;
+
+
+        districtChips.appendChild(chip);
+
+      }
+    );
+
+
+    /* ==========================================
+       DATE DEFAULT = TODAY
+    ========================================== */
+
+    document
+      .getElementById('date')
+      .valueAsDate = new Date();
+
+
+    /* ==========================================
+       CREATE NEW ICONS AFTER DYNAMIC HTML
+    ========================================== */
+
+    lucide.createIcons();
+
   </script>
+
 </body>
 </html>
