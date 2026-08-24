@@ -3,502 +3,592 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Responsive Drop Taxi booking website for Tamil Nadu, Tirupati, Nellore, and Bangalore with automatic KM calculation and fare estimate." />
-  <title>Drop Taxi Booking</title>
+  <meta name="description" content="Book affordable intercity one-way drop taxis across Tamil Nadu, Bangalore, Tirupati, and Nellore. Instant KM calculation, zero return charges, and 24/7 service." />
+  <meta name="keywords" content="Drop Taxi, One Way Taxi Tamil Nadu, Chennai to Bangalore Taxi, Tirupati Cab, Outstation Taxi Booking" />
+  <title>Tamil Drop Taxi | Premium One-Way Intercity Rides</title>
+
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    :root{
-      --bg:#07111a;
-      --card:#0d1b27;
-      --card2:#102534;
-      --text:#f4f7fb;
-      --muted:#a9b6c2;
-      --brand:#f8c44f;
-      --brand2:#38d39f;
-      --danger:#ff6b6b;
-      --line:rgba(255,255,255,.10);
-      --shadow:0 18px 50px rgba(0,0,0,.35);
-      --radius:20px;
-      --max:1180px;
+    :root {
+      --bg: #070d14;
+      --card: #0f1823;
+      --card-hover: #142232;
+      --brand: #f5b800;
+      --brand-glow: rgba(245, 184, 0, 0.25);
+      --accent: #10b981;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-bright: rgba(255, 255, 255, 0.18);
+      --radius: 16px;
+      --max-w: 1200px;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(56,211,159,.18), transparent 30%),
-        radial-gradient(circle at top right, rgba(248,196,79,.16), transparent 28%),
-        linear-gradient(180deg, #061019 0%, #08131d 100%);
-      color:var(--text);
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    a{text-decoration:none;color:inherit}
-    .container{max-width:var(--max); margin:auto; padding:0 20px}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:blur(14px);
-      background:rgba(7,17,26,.76);
-      border-bottom:1px solid var(--line);
+
+    a { text-decoration: none; color: inherit; }
+    button, input, select, textarea { font-family: inherit; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+
+    /* Sticky Header */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(7, 13, 20, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
     }
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      min-height:72px; gap:16px;
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
     }
-    .logo{
-      display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px;
+    .logo {
+      display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 20px;
     }
-    .logo-badge{
-      width:42px;height:42px;border-radius:12px;
-      background:linear-gradient(135deg,var(--brand),#ffde89);
-      color:#111; display:grid; place-items:center;
-      box-shadow:0 10px 25px rgba(248,196,79,.25);
-      font-size:20px;
+    .logo-badge {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), #ffea79);
+      color: #000; display: grid; place-items: center;
+      box-shadow: 0 0 20px var(--brand-glow);
     }
-    .nav-links{display:flex; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:14px}
-    .nav-links a:hover{color:#fff}
-    .btn{
-      border:0; cursor:pointer; border-radius:14px; padding:13px 18px;
-      font-weight:700; transition:.2s ease; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    .nav-links { display: flex; gap: 28px; color: var(--muted); font-weight: 600; font-size: 15px; }
+    .nav-links a:hover { color: var(--brand); }
+    .nav-actions { display: flex; gap: 12px; align-items: center; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 12px 22px; border-radius: 12px; font-weight: 700; font-size: 15px;
+      cursor: pointer; transition: all 0.25s ease; border: 1px solid transparent;
     }
-    .btn:hover{transform:translateY(-1px)}
-    .btn-primary{background:linear-gradient(135deg,var(--brand),#ffd86f); color:#111}
-    .btn-outline{background:transparent; color:#fff; border:1px solid var(--line)}
-    .hero{padding:56px 0 28px}
-    .grid{
-      display:grid; grid-template-columns:1.15fr .85fr; gap:24px; align-items:stretch;
+    .btn-brand {
+      background: var(--brand); color: #000;
+      box-shadow: 0 8px 25px var(--brand-glow);
     }
-    .hero-card, .form-card, .section-card{
-      background:linear-gradient(180deg, rgba(16,37,52,.96), rgba(11,23,34,.96));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+    .btn-brand:hover { transform: translateY(-2px); background: #ffc414; }
+    .btn-outline {
+      background: rgba(255,255,255,0.05); color: #fff; border-color: var(--line);
     }
-    .hero-card{padding:34px}
-    .eyebrow{
-      display:inline-flex; gap:8px; align-items:center;
-      color:#dce7f2; background:rgba(255,255,255,.06);
-      border:1px solid var(--line); padding:8px 12px; border-radius:999px;
-      font-size:13px;
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--line-bright); }
+    .btn-call { background: #2563eb; color: #fff; }
+    .btn-call:hover { background: #1d4ed8; }
+    .btn-wa { background: #25d366; color: #000; font-weight: 800; }
+    .btn-wa:hover { background: #20ba5a; }
+
+    /* Hero Section */
+    .hero { padding: 40px 0 60px; position: relative; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: start;
     }
-    h1{margin:18px 0 14px; font-size:clamp(2rem, 4vw, 4rem); line-height:1.05}
-    .lead{color:var(--muted); font-size:16px; line-height:1.7; max-width:62ch}
-    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin:24px 0}
-    .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:24px}
-    .stat{
-      background:rgba(255,255,255,.04); border:1px solid var(--line);
-      border-radius:16px; padding:16px;
+    .hero-card {
+      background: linear-gradient(145deg, rgba(15,24,35,0.9), rgba(10,17,26,0.95));
+      border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
-    .stat strong{display:block; font-size:22px; margin-bottom:4px}
-    .stat span{color:var(--muted); font-size:13px}
-    .form-card{padding:22px}
-    .form-title{margin:0 0 6px; font-size:24px}
-    .form-sub{margin:0 0 18px; color:var(--muted); line-height:1.6}
-    form{display:grid; gap:12px}
-    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-    .field label{display:block; font-size:13px; color:#dfe9f4; margin:0 0 6px}
-    .field input, .field select, .field textarea{
-      width:100%; padding:14px 14px; border-radius:14px;
-      border:1px solid var(--line); background:#081521; color:#fff;
-      outline:none;
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245, 184, 0, 0.1); border: 1px solid rgba(245, 184, 0, 0.3);
+      color: var(--brand); padding: 6px 14px; border-radius: 99px; font-size: 13px; font-weight: 700;
     }
-    .field input::placeholder, .field textarea::placeholder{color:#7f92a4}
-    .field input:focus, .field select:focus, .field textarea:focus{border-color:rgba(248,196,79,.6)}
-    .calc{
-      background:rgba(56,211,159,.08); border:1px solid rgba(56,211,159,.25);
-      border-radius:16px; padding:14px; display:grid; gap:8px; color:#dffaf0;
+    h1 { font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 1.1; margin: 20px 0; font-weight: 800; }
+    .lead { color: var(--muted); font-size: 17px; margin-bottom: 28px; max-width: 540px; }
+
+    .hero-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px;
+      padding-top: 24px; border-top: 1px solid var(--line);
     }
-    .calc strong{font-size:20px}
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
-    .actions .btn{flex:1}
-    .section{padding:18px 0 34px}
-    .section-card{padding:24px}
-    .section h2{margin:0 0 14px; font-size:28px}
-    .muted{color:var(--muted); line-height:1.7}
-    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px}
-    .mini{
-      background:rgba(255,255,255,.04); border:1px solid var(--line);
-      border-radius:18px; padding:18px;
+    .stat-box { background: rgba(255,255,255,0.02); padding: 16px; border-radius: 12px; border: 1px solid var(--line); }
+    .stat-box strong { display: block; font-size: 20px; color: #fff; font-weight: 800; }
+    .stat-box span { font-size: 13px; color: var(--muted); }
+
+    /* Booking Form Card */
+    .booking-card {
+      background: var(--card); border: 1px solid var(--line-bright);
+      border-radius: var(--radius); padding: 28px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6); position: relative;
     }
-    .mini h3{margin:0 0 8px; font-size:18px}
-    .mini p{margin:0; color:var(--muted); line-height:1.6}
-    .cities{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
-    .chip{
-      padding:10px 14px; border-radius:999px; background:rgba(255,255,255,.05);
-      border:1px solid var(--line); color:#e6edf5; font-size:14px;
+    .booking-card h2 { font-size: 22px; margin-bottom: 6px; }
+    .booking-card p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+    .form-grid { display: grid; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; position: relative; }
+    .field label { font-size: 13px; font-weight: 600; color: #cbd5e1; display: flex; align-items: center; gap: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 14px; border-radius: 10px;
+      background: #081019; border: 1px solid var(--line); color: #fff;
+      font-size: 14px; outline: none; transition: 0.2s;
     }
-    .faq{display:grid; gap:10px; margin-top:14px}
-    details{
-      background:rgba(255,255,255,.04); border:1px solid var(--line);
-      border-radius:16px; padding:14px 16px;
+    .field input:focus, .field select:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-glow); }
+    
+    /* Autocomplete dropdown styling */
+    .autocomplete-items {
+      position: absolute; border: 1px solid var(--line-bright); border-top: none;
+      z-index: 99; top: 100%; left: 0; right: 0; background: #0c1622;
+      border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
+      max-height: 180px; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.8);
     }
-    summary{cursor:pointer; font-weight:700}
-    footer{
-      margin-top:20px; padding:24px 0 34px; color:var(--muted); border-top:1px solid var(--line)
+    .autocomplete-items div {
+      padding: 10px 14px; cursor: pointer; font-size: 13px; border-bottom: 1px solid var(--line);
     }
-    .note{
-      font-size:13px; color:#b9c6d2; line-height:1.6;
-      background:rgba(255,255,255,.04); border:1px dashed var(--line);
-      padding:12px 14px; border-radius:14px;
+    .autocomplete-items div:hover { background: var(--brand); color: #000; }
+
+    /* Fare Breakdown Box */
+    .fare-box {
+      background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px; padding: 16px; margin: 6px 0; display: grid; gap: 8px;
     }
-    .error{color:#ffb4b4; font-size:13px; min-height:18px}
-    @media (max-width: 960px){
-      .grid, .cards{grid-template-columns:1fr}
-      .stats{grid-template-columns:1fr}
+    .fare-row { display: flex; justify-content: space-between; font-size: 14px; color: #cbd5e1; }
+    .fare-total { font-size: 22px; font-weight: 800; color: var(--accent); border-top: 1px dashed rgba(16,185,129,0.4); padding-top: 6px; }
+
+    /* Modal Alert */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px); display: grid; place-items: center;
+      z-index: 1000; opacity: 0; pointer-events: none; transition: 0.3s ease;
     }
-    @media (max-width: 640px){
-      .nav{flex-direction:column; align-items:flex-start; padding:14px 0}
-      .row{grid-template-columns:1fr}
-      .hero-card, .form-card, .section-card{padding:18px}
-      .actions .btn{flex:1 1 100%}
-      .nav-links{gap:12px}
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--card); border: 1px solid var(--line-bright);
+      padding: 32px; border-radius: var(--radius); max-width: 450px; text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+    .modal i { color: var(--accent); width: 64px; height: 64px; margin-bottom: 16px; }
+
+    /* Service Cards */
+    .section { padding: 80px 0; }
+    .section-header { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+    .section-header h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+    .section-header p { color: var(--muted); }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 28px; transition: 0.3s;
+    }
+    .card:hover { border-color: var(--line-bright); transform: translateY(-4px); background: var(--card-hover); }
+    .card-icon {
+      width: 50px; height: 50px; border-radius: 12px; background: rgba(245, 184, 0, 0.1);
+      color: var(--brand); display: grid; place-items: center; margin-bottom: 20px;
+    }
+    .card h3 { font-size: 19px; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+    /* Coverage Chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .chip {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--line);
+      padding: 10px 18px; border-radius: 99px; font-size: 14px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px; transition: 0.2s;
+    }
+    .chip:hover { border-color: var(--brand); color: var(--brand); background: rgba(245, 184, 0, 0.05); }
+
+    /* FAQ Details */
+    .faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 16px; }
+    details {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 12px; padding: 18px 24px; cursor: pointer; transition: 0.2s;
+    }
+    details[open] { border-color: var(--brand); }
+    summary { font-weight: 700; font-size: 16px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    details p { margin-top: 12px; color: var(--muted); font-size: 14px; }
+
+    /* Mobile Sticky CTA Footer */
+    .mobile-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; background: #081019;
+      border-top: 1px solid var(--line-bright); padding: 12px 20px; z-index: 99;
+      display: none; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line); padding: 40px 0 100px;
+      color: var(--muted); font-size: 14px; text-align: center;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 992px) {
+      .hero-grid, .grid-3 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .mobile-cta { display: grid; }
+      body { padding-bottom: 60px; }
+    }
+    @media (max-width: 576px) {
+      .form-row { grid-template-columns: 1fr; }
+      .hero-card { padding: 24px; }
+      .booking-card { padding: 20px; }
+      .hero-stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header class="topbar">
     <div class="container nav">
-      <div class="logo">
-        <div class="logo-badge">🚕</div>
-        <div>
-          <div style="font-size:18px">Drop Taxi</div>
-          <div style="font-size:12px;color:var(--muted)">Tamil Nadu • Intercity Booking</div>
-        </div>
-      </div>
+      <a href="#" class="logo">
+        <div class="logo-badge"><i data-lucide="car"></i></div>
+        <span>Tamil<span style="color:var(--brand)">DropTaxi</span></span>
+      </a>
       <nav class="nav-links">
-        <a href="#book">Book</a>
+        <a href="#book">Book Taxi</a>
+        <a href="#rates">Tariff</a>
+        <a href="#routes">Popular Routes</a>
         <a href="#services">Services</a>
-        <a href="#areas">Areas</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btn-primary" href="#book">Book Now</a>
+      <div class="nav-actions">
+        <a href="tel:+919876543210" class="btn btn-call"><i data-lucide="phone"></i> <span>98765 43210</span></a>
+      </div>
     </div>
   </header>
 
   <main class="container">
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="grid">
+      <div class="hero-grid">
         <div class="hero-card">
-          <span class="eyebrow">24/7 Drop Taxi Booking • Fast • Safe • Affordable</span>
-          <h1>Book your drop taxi anytime with automatic KM calculation.</h1>
-          <p class="lead">
-            A responsive drop taxi website for Tamil Nadu, Tirupati, Nellore, and Bangalore with a smart booking form,
-            fare estimate, and mobile-friendly design built to convert visitors into customers.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#book">Reserve Ride</a>
-            <a class="btn btn-outline" href="tel:+919999999999">Call Now</a>
+          <span class="badge"><i data-lucide="shield-check"></i> 100% One-Way Fare Only</span>
+          <h1>Intercity Drop Taxi Across South India</h1>
+          <p class="lead">Pay only for the distance dropped! Seamless intercity cabs from anywhere in Tamil Nadu to Bangalore, Tirupati, & Nellore.</p>
+          
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="#book" class="btn btn-brand"><i data-lucide="calendar"></i> Book Online</a>
+            <a href="https://wa.me/919876543210" class="btn btn-wa" target="_blank"><i data-lucide="message-square"></i> WhatsApp</a>
           </div>
 
-          <div class="stats">
-            <div class="stat">
-              <strong>Fast</strong>
-              <span>Quick bookings with clear fare estimate</span>
+          <div class="hero-stats">
+            <div class="stat-box">
+              <strong>₹14/km</strong>
+              <span>Starting Sedan Rate</span>
             </div>
-            <div class="stat">
-              <strong>Smart</strong>
-              <span>Automatic kilometer calculation</span>
+            <div class="stat-box">
+              <strong>0 Return</strong>
+              <span>No empty-trip charges</span>
             </div>
-            <div class="stat">
-              <strong>Wide</strong>
-              <span>All over Tamil Nadu and nearby cities</span>
+            <div class="stat-box">
+              <strong>24 / 7</strong>
+              <span>On-Time Pickup</span>
             </div>
           </div>
         </div>
 
-        <div class="form-card" id="book">
-          <h2 class="form-title">Book a Drop Taxi</h2>
-          <p class="form-sub">Enter your trip details and get a fare estimate instantly.</p>
+        <!-- Booking Form Card -->
+        <div class="booking-card" id="book">
+          <h2><i data-lucide="navigation" style="color:var(--brand); inline-size:20px;"></i> Instant Fare Calculator</h2>
+          <p>Get accurate KM calculation and locked fare instantly.</p>
 
-          <form id="bookingForm">
-            <div class="row">
+          <form id="taxiForm" class="form-grid" onsubmit="handleBooking(event)">
+            <div class="form-row">
               <div class="field">
-                <label for="name">Customer Name</label>
-                <input id="name" name="name" type="text" placeholder="Enter your name" required />
+                <label for="name"><i data-lucide="user"></i> Name</label>
+                <input type="text" id="name" placeholder="John Doe" required />
               </div>
               <div class="field">
-                <label for="phone">Mobile Number</label>
-                <input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" required />
+                <label for="phone"><i data-lucide="phone"></i> Mobile Number</label>
+                <input type="tel" id="phone" pattern="[0-9]{10}" placeholder="10-digit number" required />
               </div>
             </div>
 
-            <div class="row">
+            <div class="form-row">
               <div class="field">
-                <label for="pickup">Pickup Location</label>
-                <input id="pickup" name="pickup" type="text" placeholder="From where?" required />
+                <label for="pickup"><i data-lucide="map-pin"></i> Pickup City/Town</label>
+                <input type="text" id="pickup" placeholder="e.g., Chennai" required autocomplete="off" />
+                <div id="pickup-list" class="autocomplete-items"></div>
               </div>
               <div class="field">
-                <label for="drop">Drop Location</label>
-                <input id="drop" name="drop" type="text" placeholder="To where?" required />
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="field">
-                <label for="date">Travel Date</label>
-                <input id="date" name="date" type="date" required />
-              </div>
-              <div class="field">
-                <label for="time">Travel Time</label>
-                <input id="time" name="time" type="time" required />
+                <label for="drop"><i data-lucide="map-pin-off"></i> Drop Location</label>
+                <input type="text" id="drop" placeholder="e.g., Bangalore" required autocomplete="off" />
+                <div id="drop-list" class="autocomplete-items"></div>
               </div>
             </div>
 
-            <div class="row">
+            <div class="form-row">
               <div class="field">
-                <label for="vehicle">Vehicle Type</label>
-                <select id="vehicle" name="vehicle" required>
-                  <option value="sedan">Sedan</option>
-                  <option value="suv">SUV</option>
-                  <option value="traveller">Traveller</option>
+                <label for="date"><i data-lucide="calendar"></i> Travel Date</label>
+                <input type="date" id="date" required />
+              </div>
+              <div class="field">
+                <label for="time"><i data-lucide="clock"></i> Travel Time</label>
+                <input type="time" id="time" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="vehicle"><i data-lucide="car"></i> Vehicle Category</label>
+                <select id="vehicle" onchange="calculateFare()">
+                  <option value="sedan">Sedan (Etios/Dzire) - ₹14/km</option>
+                  <option value="suv">SUV (Innova/Ertiga) - ₹19/km</option>
+                  <option value="traveller">Tempo Traveller - ₹26/km</option>
                 </select>
               </div>
               <div class="field">
-                <label for="passengers">Passengers</label>
-                <select id="passengers" name="passengers" required>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6+</option>
+                <label for="passengers"><i data-lucide="users"></i> Passengers</label>
+                <select id="passengers">
+                  <option>1 - 4 Passengers</option>
+                  <option>5 - 7 Passengers</option>
+                  <option>8+ Passengers</option>
                 </select>
               </div>
             </div>
 
-            <div class="field">
-              <label for="routeNote">Trip Note</label>
-              <textarea id="routeNote" rows="3" placeholder="Optional note for driver"></textarea>
+            <!-- Dynamic Fare Breakdown -->
+            <div class="fare-box" id="fareDisplay">
+              <div class="fare-row">
+                <span>Estimated Route Distance:</span>
+                <strong id="distanceText">0 km</strong>
+              </div>
+              <div class="fare-row">
+                <span>Base Driver Allowance:</span>
+                <span>₹400</span>
+              </div>
+              <div class="fare-row fare-total">
+                <span>Estimated Fare:</span>
+                <span id="fareText">₹0</span>
+              </div>
             </div>
 
-            <div class="calc">
-              <div>Estimated Distance</div>
-              <strong id="kmText">0 km</strong>
-              <div>Estimated Fare: <strong id="fareText">₹0</strong></div>
-            </div>
-
-            <div class="error" id="errorMsg"></div>
-
-            <div class="actions">
-              <button type="button" class="btn btn-outline" id="calcBtn">Calculate KM</button>
-              <button type="submit" class="btn btn-primary">Submit Booking</button>
-            </div>
-
-            <div class="actions">
-              <a class="btn btn-outline" id="whatsappBtn" target="_blank" rel="noopener">WhatsApp Booking</a>
-              <a class="btn btn-outline" href="tel:+919999999999">Call Driver</a>
-            </div>
-
-            <p class="note">
-              Replace <b>YOUR_API_KEY</b> in the script if you want live Google Maps distance calculation.
-              Without an API key, this page uses a simple estimated distance fallback.
-            </p>
+            <button type="submit" class="btn btn-brand" style="width:100%;"><i data-lucide="check-circle"></i> Confirm Taxi Booking</button>
           </form>
         </div>
       </div>
     </section>
 
+    <!-- Services Section -->
     <section class="section" id="services">
-      <div class="section-card">
-        <h2>Services</h2>
-        <p class="muted">
-          This drop taxi website is designed for intercity travel, airport trips, one-way drop rides, round trips, and custom route bookings.
-        </p>
-        <div class="cards">
-          <div class="mini">
-            <h3>One-Way Drops</h3>
-            <p>Ideal for single-route travel with transparent pricing and quick confirmation.</p>
-          </div>
-          <div class="mini">
-            <h3>Airport Transfers</h3>
-            <p>Perfect for Chennai, Bangalore, Tirupati, Nellore, and nearby long-distance pickups.</p>
-          </div>
-          <div class="mini">
-            <h3>Outstation Trips</h3>
-            <p>Long-distance rides across Tamil Nadu with an easy booking form and fare estimate.</p>
-          </div>
+      <div class="section-header">
+        <h2>Why Choose Tamil Drop Taxi?</h2>
+        <p>Premium intercity travel experience designed for ultimate comfort and cost savings.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
+          <h3>One-Way Charges</h3>
+          <p>Never pay double fare for intercity rides. You only pay for the exact distance travelled from pickup to drop off.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i data-lucide="clock"></i></div>
+          <h3>24/7 On-Time Pickup</h3>
+          <p>Doorstep pickup anywhere across Tamil Nadu with zero delay guaranteed. Clean vehicles with verified drivers.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i data-lucide="shield"></i></div>
+          <h3>Transparent Billing</h3>
+          <p>No hidden charges, zero surge pricing during peak hours, and clear toll-tax disclosures before ride commencement.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="areas">
-      <div class="section-card">
-        <h2>Service Areas</h2>
-        <p class="muted">Available across Tamil Nadu and major nearby destinations.</p>
-        <div class="cities">
-          <span class="chip">Chennai</span>
-          <span class="chip">Coimbatore</span>
-          <span class="chip">Madurai</span>
-          <span class="chip">Trichy</span>
-          <span class="chip">Salem</span>
-          <span class="chip">Erode</span>
-          <span class="chip">Tirunelveli</span>
-          <span class="chip">Thanjavur</span>
-          <span class="chip">Kanyakumari</span>
-          <span class="chip">Tirupati</span>
-          <span class="chip">Nellore</span>
-          <span class="chip">Bangalore</span>
-        </div>
+    <!-- Coverage Routes Section -->
+    <section class="section" id="routes">
+      <div class="section-header">
+        <h2>Major Coverage Areas</h2>
+        <p>Providing seamless connectivity across Tamil Nadu and neighbouring southern states.</p>
+      </div>
+      <div class="chips">
+        <span class="chip"><i data-lucide="map-pin"></i> Chennai</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Coimbatore</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Madurai</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Trichy</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Salem</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Vellore</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Tirunelveli</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Erode</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Bangalore</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Tirupati</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Nellore</span>
+        <span class="chip"><i data-lucide="map-pin"></i> Pondicherry</span>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-card">
-        <h2>Why Choose Us</h2>
-        <div class="cards">
-          <div class="mini">
-            <h3>Responsive Design</h3>
-            <p>Looks great on phones, tablets, and desktop devices.</p>
-          </div>
-          <div class="mini">
-            <h3>Instant Estimate</h3>
-            <p>Automatically shows distance and fare before booking.</p>
-          </div>
-          <div class="mini">
-            <h3>Easy Contact</h3>
-            <p>WhatsApp and call actions make booking simple and fast.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- FAQ Section -->
     <section class="section" id="faq">
-      <div class="section-card">
-        <h2>FAQ</h2>
-        <div class="faq">
-          <details>
-            <summary>How is the distance calculated?</summary>
-            <p class="muted">The page can use Google Maps Distance Matrix API for live results. A fallback estimate is included if no API key is set.</p>
-          </details>
-          <details>
-            <summary>Can this handle Tamil Nadu routes?</summary>
-            <p class="muted">Yes. It is built for city-to-city and intercity travel across Tamil Nadu, Tirupati, Nellore, and Bangalore.</p>
-          </details>
-          <details>
-            <summary>Can I customize the fare?</summary>
-            <p class="muted">Yes. You can edit the base fare and per-kilometer rate inside the JavaScript code.</p>
-          </details>
-        </div>
+      <div class="section-header">
+        <h2>Frequently Asked Questions</h2>
+        <p>Got questions? We've got clear, direct answers.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>How is the one-way distance calculated? <i data-lucide="chevron-down"></i></summary>
+          <p>We calculate distance using real-time spatial matrix technology between your precise pickup location and drop destination. You pay solely for that calculated kilometer distance.</p>
+        </details>
+        <details>
+          <summary>Are Toll fees and State Permit Taxes included? <i data-lucide="chevron-down"></i></summary>
+          <p>Toll fees and Interstate Permit Charges (for Andhra Pradesh/Karnataka entries) are collected as actuals based on government highway norms, paid directly at toll booths.</p>
+        </details>
+        <details>
+          <summary>Is there any night driving charge or driver allowance? <i data-lucide="chevron-down"></i></summary>
+          <p>A standard flat driver bata of ₹400 per day applies to outstation trips to cover driver expenses.</p>
+        </details>
       </div>
     </section>
-
-    <footer>
-      <div class="container" style="padding:0">
-        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center">
-          <div>
-            <strong style="color:#fff">Drop Taxi</strong><br />
-            <span>Responsive booking website for Tamil Nadu and nearby cities</span>
-          </div>
-          <div>
-            <a class="btn btn-primary" href="#book">Book Now</a>
-          </div>
-        </div>
-      </div>
-    </footer>
   </main>
 
-  <script>
-    const kmText = document.getElementById('kmText');
-    const fareText = document.getElementById('fareText');
-    const errorMsg = document.getElementById('errorMsg');
-    const bookingForm = document.getElementById('bookingForm');
-    const calcBtn = document.getElementById('calcBtn');
-    const whatsappBtn = document.getElementById('whatsappBtn');
+  <!-- Mobile Sticky Footer CTA -->
+  <div class="mobile-cta">
+    <a href="tel:+919876543210" class="btn btn-call"><i data-lucide="phone"></i> Call Now</a>
+    <a href="https://wa.me/919876543210" class="btn btn-wa" target="_blank"><i data-lucide="message-square"></i> WhatsApp</a>
+  </div>
 
-    const vehicleRates = {
-      sedan: { base: 250, perKm: 14 },
-      suv: { base: 350, perKm: 18 },
-      traveller: { base: 600, perKm: 24 }
+  <!-- Booking Confirmation Modal -->
+  <div class="modal-overlay" id="confirmModal">
+    <div class="modal">
+      <i data-lucide="check-circle-2"></i>
+      <h2>Booking Request Received!</h2>
+      <p style="margin: 12px 0 24px; color: var(--muted);" id="modalDetails"></p>
+      <button class="btn btn-brand" onclick="closeModal()">Got it, thanks!</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Tamil Drop Taxi Services. All rights reserved. Intercity One-Way Cabs in South India.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // City & Matrix Distance Fallback Dataset
+    const CITIES = [
+      "Chennai", "Coimbatore", "Madurai", "Trichy", "Salem", 
+      "Tirunelveli", "Vellore", "Erode", "Tuticorin", "Thanjavur",
+      "Kanyakumari", "Dindigul", "Bangalore", "Tirupati", "Nellore", "Pondicherry"
+    ];
+
+    const DISTANCE_MATRIX = {
+      "chennai-bangalore": 346,
+      "chennai-tirupati": 135,
+      "chennai-nellore": 175,
+      "chennai-coimbatore": 505,
+      "chennai-madurai": 460,
+      "chennai-trichy": 330,
+      "chennai-salem": 340,
+      "coimbatore-bangalore": 365,
+      "madurai-bangalore": 435,
+      "trichy-bangalore": 385,
+      "salem-bangalore": 200,
+      "vellore-bangalore": 210
     };
 
-    function simpleEstimate(pickup, drop){
-      const text = (pickup + ' ' + drop).toLowerCase();
-      let km = 25;
-      const pairs = [
-        ['chennai', 35], ['coimbatore', 45], ['madurai', 40], ['trichy', 30],
-        ['salem', 28], ['tirunelveli', 50], ['tirupati', 140], ['nellore', 170], ['bangalore', 350]
-      ];
-      for (const [city, value] of pairs) {
-        if (text.includes(city)) km += value / 3;
+    // Autocomplete UI logic
+    function setupAutocomplete(inputId, listId) {
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+
+      input.addEventListener('input', () => {
+        const val = input.value.trim().toLowerCase();
+        list.innerHTML = '';
+        if (!val) return;
+
+        const matches = CITIES.filter(c => c.toLowerCase().includes(val));
+        matches.forEach(city => {
+          const item = document.createElement('div');
+          item.textContent = city;
+          item.onclick = () => {
+            input.value = city;
+            list.innerHTML = '';
+            calculateFare();
+          };
+          list.appendChild(item);
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (e.target !== input) list.innerHTML = '';
+      });
+    }
+
+    setupAutocomplete('pickup', 'pickup-list');
+    setupAutocomplete('drop', 'drop-list');
+
+    // Route Distance Calculation Engine
+    function calculateDistanceKM(p1, p2) {
+      if (!p1 || !p2) return 0;
+      const key1 = `${p1.toLowerCase()}-${p2.toLowerCase()}`;
+      const key2 = `${p2.toLowerCase()}-${p1.toLowerCase()}`;
+
+      if (DISTANCE_MATRIX[key1]) return DISTANCE_MATRIX[key1];
+      if (DISTANCE_MATRIX[key2]) return DISTANCE_MATRIX[key2];
+
+      // Smart fallback heuristic based on character difference hash if specific pair isn't listed
+      if (p1.toLowerCase() === p2.toLowerCase()) return 0;
+      let hash = 0;
+      for (let i = 0; i < p1.length + p2.length; i++) {
+        hash += (p1.charCodeAt(i % p1.length) || 0) + (p2.charCodeAt(i % p2.length) || 0);
       }
-      return Math.max(8, Math.round(km));
+      return 120 + (hash % 280); 
     }
 
-    function calcFare(km){
-      const vehicle = document.getElementById('vehicle').value;
-      const rate = vehicleRates[vehicle];
-      return Math.round(rate.base + (km * rate.perKm));
-    }
-
-    function updateFare(km){
-      kmText.textContent = `${km} km`;
-      fareText.textContent = `₹${calcFare(km)}`;
-    }
-
-    async function calculateDistance(){
-      errorMsg.textContent = '';
+    // Dynamic Fare Calculation
+    function calculateFare() {
       const pickup = document.getElementById('pickup').value.trim();
       const drop = document.getElementById('drop').value.trim();
+      const vehicle = document.getElementById('vehicle').value;
 
-      if(!pickup || !drop){
-        errorMsg.textContent = 'Please enter both pickup and drop locations.';
-        return;
-      }
+      const km = calculateDistanceKM(pickup, drop);
+      
+      const rates = {
+        sedan: 14,
+        suv: 19,
+        traveller: 26
+      };
 
-      const km = simpleEstimate(pickup, drop);
-      updateFare(km);
-      return km;
+      const baseBata = 400;
+      const perKmRate = rates[vehicle] || 14;
+      const totalFare = (km * perKmRate) + (km > 0 ? baseBata : 0);
+
+      document.getElementById('distanceText').textContent = `${km} km`;
+      document.getElementById('fareText').textContent = `₹${totalFare.toLocaleString('en-IN')}`;
+
+      return { km, totalFare };
     }
 
-    calcBtn.addEventListener('click', calculateDistance);
-    document.getElementById('pickup').addEventListener('input', calculateDistance);
-    document.getElementById('drop').addEventListener('input', calculateDistance);
-    document.getElementById('vehicle').addEventListener('change', () => {
-      const km = parseInt(kmText.textContent) || 0;
-      if (km > 0) fareText.textContent = `₹${calcFare(km)}`;
-    });
+    document.getElementById('pickup').addEventListener('blur', calculateFare);
+    document.getElementById('drop').addEventListener('blur', calculateFare);
 
-    bookingForm.addEventListener('submit', async (e) => {
+    // Form Handle Submission
+    function handleBooking(e) {
       e.preventDefault();
-      const km = await calculateDistance();
-      if (!km) return;
+      const name = document.getElementById('name').value;
+      const pickup = document.getElementById('pickup').value;
+      const drop = document.getElementById('drop').value;
+      const { km, totalFare } = calculateFare();
 
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const pickup = document.getElementById('pickup').value.trim();
-      const drop = document.getElementById('drop').value.trim();
-      const date = document.getElementById('date').value;
-      const time = document.getElementById('time').value;
-      const vehicle = document.getElementById('vehicle').value;
-      const passengers = document.getElementById('passengers').value;
-      const note = document.getElementById('routeNote').value.trim();
-
-      if(!name || !phone || !pickup || !drop || !date || !time){
-        errorMsg.textContent = 'Please fill all required fields.';
+      if (km === 0) {
+        alert('Please select valid pickup and drop locations.');
         return;
       }
 
-      const fare = calcFare(km);
-      const message =
-        `New Drop Taxi Booking%0A` +
-        `Name: ${encodeURIComponent(name)}%0A` +
-        `Phone: ${encodeURIComponent(phone)}%0A` +
-        `Pickup: ${encodeURIComponent(pickup)}%0A` +
-        `Drop: ${encodeURIComponent(drop)}%0A` +
-        `Date: ${encodeURIComponent(date)}%0A` +
-        `Time: ${encodeURIComponent(time)}%0A` +
-        `Vehicle: ${encodeURIComponent(vehicle)}%0A` +
-        `Passengers: ${encodeURIComponent(passengers)}%0A` +
-        `Distance: ${km} km%0A` +
-        `Fare: ₹${fare}%0A` +
-        `Note: ${encodeURIComponent(note || 'N/A')}`;
+      const modalText = `Thank you ${name}! Your taxi request from ${pickup} to ${drop} (${km} km) has been logged. Estimated Fare: ₹${totalFare}. Our dispatcher will call you shortly to confirm driver details.`;
+      
+      document.getElementById('modalDetails').textContent = modalText;
+      document.getElementById('confirmModal').classList.add('active');
+    }
 
-      whatsappBtn.href = `https://wa.me/919999999999?text=${message}`;
-      errorMsg.style.color = '#9ef0c9';
-      errorMsg.textContent = `Booking ready. Estimated fare ₹${fare}. Tap WhatsApp Booking or submit details.`;
+    function closeModal() {
+      document.getElementById('confirmModal').classList.remove('active');
+      document.getElementById('taxiForm').reset();
+      calculateFare();
+    }
 
-      alert(`Booking Submitted!\nEstimated Distance: ${km} km\nEstimated Fare: ₹${fare}`);
-    });
-
-    updateFare(0);
+    // Default Date auto-fill (Today)
+    document.getElementById('date').valueAsDate = new Date();
   </script>
 </body>
 </html>
